@@ -150,6 +150,7 @@ class Univers:
         screen.fill((0, 0, 0))
 
         while True:
+            print('test')
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -186,16 +187,16 @@ class Univers:
             if not self.particles:
                 self.particles = self.univers.pop
             for particle in self.particles:
-                if particle.active:
-                    distance = math.sqrt((particle.pos[-1][0] - self.position[0])**2 +
-                                         (particle.pos[-1][1] - self.position[1])**2 +
-                                         (particle.pos[-1][2] - self.position[2])**2)
-                    direction = [(self.position[0] - particle.pos[-1][0]) / distance,
-                                 (self.position[1] - particle.pos[-1][1]) / distance,
-                                 (self.position[2] - particle.pos[-1][2]) / distance]
-                    force = [self.strength * direction[i] for i in range(3)]
-                    
-                    particle.addForce(force)
+              
+                distance = math.sqrt((particle.pos[-1][0] - self.position[0])**2 +
+                                     (particle.pos[-1][1] - self.position[1])**2 +
+                                     (particle.pos[-1][2] - self.position[2])**2)
+                direction = [(self.position[0] - particle.pos[-1][0]) / distance,
+                             (self.position[1] - particle.pos[-1][1]) / distance,
+                             (self.position[2] - particle.pos[-1][2]) / distance]
+                force = [self.strength * direction[i] for i in range(3)]
+                # print(particle)
+                particle.addForce(force)
 
 
     class ForceConst:

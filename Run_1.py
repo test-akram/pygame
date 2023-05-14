@@ -37,4 +37,3 @@ force_attractive = univers.ForceAttractive(position=(scene_width/2, scene_height
 univers.addSource(force_attractive)
 
 univers.gameDraw()
-

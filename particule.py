@@ -11,8 +11,7 @@ matplotlib.use("Agg")
 
 
 class Particule:
-    def __init__(self, masse, pos0=(0, 0, 0), vit0=(0, 0, 0), name='init', color='white', fix=0, active=True):
-        self.active = active
+    def __init__(self, masse, pos0=(0, 0, 0), vit0=(0, 0, 0), name='init', color='white', fix=0):
         self.masse = masse
         self.pos = [pos0]
         self.vit = [vit0]
@@ -74,11 +73,10 @@ class Particule:
         return f'Particule({self.masse}, {self.pos[-1]}, {self.vit[-1]}, {self.name}, {self.color}, {self.fix})'
 
     def __str__(self):
-        return f'Particule {self.name}: masse={self.masse}, pos={self.pos[-1]}, vit={self.vit[-1]}'
+        return f'Particule {self.name}: m={self.masse}, pos={self.pos[-1]}, vit={self.vit[-1]}'
 
     def plot2D(self, plot):
         # set up matplotlib
-        # print(self.pos)
         plt.rcParams.update({
             "lines.marker": "o",
             "lines.linewidth": "1",
@@ -179,7 +177,7 @@ class Particule:
 
             self.update_pos(new_pos)
 
-            surf = self.plot2D(plt)
+            surf = self.plot3D(plt)
 
             # blit the plot to the screen
             screen.blit(surf, (0, 0))
